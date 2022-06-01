@@ -1,0 +1,14 @@
+export const config: TypeOrmModuleOptions = {
+    type: 'mysql',
+    host: database().host,
+    port: parseInt(database().port),
+    username: database().username,
+    password: database().password,
+    database: database().schema,
+    entities: [Question, QuestionOption], // maybe you should also consider chage it to something like:  [__dirname + '/**/*.entity.ts', __dirname + '/src/**/*.entity.js']
+    migrations: ['src/migration/*{.ts,.js}'],
+    cli: {
+      migrationsDir: 'src/migration'
+    },
+    synchronize: true,
+  }
